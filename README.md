@@ -1,20 +1,26 @@
-# Junk Services Muskoka
+# Junk Removal Muskoka - Lean Static Site
 
-This is a React + Vite landing page built from the prompts you provided.
+This is a super simple static version of the site.
 
-## Quick start
+## Why this version
+- Fewer files
+- No build step
+- No React / Vite / Tailwind install needed
+- Easier to upload to GitHub and deploy
+- Less likely to go blank from build/config issues
 
-```bash
-npm install
-npm run dev
-```
+## Files
+- `index.html`
+- `styles.css`
+- `script.js`
+- `assets/logo.png`
+- `assets/truck.jpg`
 
-## Before you deploy
+## Deploy on Netlify
+1. Upload the whole folder to GitHub.
+2. In Netlify, import the repo.
+3. Build command: leave blank
+4. Publish directory: `.`
 
-Add these files to `/public`:
-- `logo.png` — your logo for the navbar and footer
-- `truck.jpg` — your hero background image
-
-## Notes
-- The quote form is currently front-end only and shows a success state after submit.
-- If you want real submissions next, connect it to Netlify Forms, Formspree, Resend, or your own backend.
+## Domain
+Connect your Cloudflare domain to the Netlify site after deploy.
