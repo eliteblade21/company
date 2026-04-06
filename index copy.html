@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Junk Services Muskoka</title>
+</head>
+<body>
+
+<h1>Junk Services Muskoka</h1>
+
+<form id="quote-form">
+  <input name="name" placeholder="Name" required /><br/>
+  <input name="email" type="email" placeholder="Email" required /><br/>
+  <input name="phone" placeholder="Phone" required /><br/>
+  <input name="service" placeholder="Service" required /><br/>
+  <input name="location" placeholder="Location" required /><br/>
+  <textarea name="details" placeholder="Details" required></textarea><br/>
+  <button type="submit">Send Request</button>
+</form>
+
+<script>
+document.getElementById("quote-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const form = e.target;
+
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    service: form.service.value,
+    location: form.location.value,
+    details: form.details.value,
+  };
+
+  try {
+    const res = await fetch("/api/quote", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (res.ok) {
+      alert("Quote request sent!");
+      form.reset();
+    } else {
+      alert("Failed to send.");
+    }
+  } catch (err) {
+    alert("Something went wrong.");
+    console.error(err);
+  }
+});
+</script>
+
+</body>
+</html>
