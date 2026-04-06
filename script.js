@@ -1,42 +1,36 @@
-const menuToggle = document.getElementById('menuToggle');
-const mobileNav = document.getElementById('mobileNav');
+document.getElementById("quote-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-if (menuToggle && mobileNav) {
-  menuToggle.addEventListener('click', () => {
-    const isOpen = mobileNav.classList.toggle('open');
-    mobileNav.hidden = !isOpen;
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
-  });
+  const form = e.target;
 
-  mobileNav.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileNav.classList.remove('open');
-      mobileNav.hidden = true;
-      menuToggle.setAttribute('aria-expanded', 'false');
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    service: form.service.value,
+    location: form.location.value,
+    details: form.details.value,
+  };
+
+  try {
+    const res = await fetch("/api/quote", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
-  });
-}
 
-const quoteForm = document.getElementById('quoteForm');
+    const result = await res.json();
 
-if (quoteForm) {
-  quoteForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const data = new FormData(quoteForm);
-    const subject = encodeURIComponent('Quote Request - Junk Removal Muskoka');
-    const body = encodeURIComponent(
-      [
-        `Name: ${data.get('name') || ''}`,
-        `Phone: ${data.get('phone') || ''}`,
-        `Email: ${data.get('email') || ''}`,
-        `Address: ${data.get('address') || ''}`,
-        '',
-        'What needs to go:',
-        `${data.get('junk') || ''}`,
-      ].join('\n')
-    );
-
-    window.location.href = `mailto:junkservicesmuskoka@gmail.com?subject=${subject}&body=${body}`;
-  });
-}
+    if (res.ok) {
+      alert("Quote request sent!");
+      form.reset();
+    } else {
+      alert(result.error || "Failed to send.");
+    }
+  } catch (err) {
+    alert("Something went wrong.");
+    console.error(err);
+  }
+});

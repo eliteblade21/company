@@ -1,16 +1,7 @@
 {
-  "name": "junkservicesmuskoka-site",
+  "name": "junkservices",
   "version": "1.0.0",
-  "private": true,
-  "description": "GitHub-ready junk removal site with a Vercel serverless quote form.",
-  "scripts": {
-    "dev": "vercel dev",
-    "start": "vercel dev"
-  },
   "dependencies": {
-    "resend": "^4.6.0"
-  },
-  "devDependencies": {
-    "vercel": "^39.1.0"
+    "resend": "^3.2.0"
   }
 }
