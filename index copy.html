@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Junk Services Muskoka</title>
+  <meta
+    name="description"
+    content="Fast, reliable junk removal and cleanup services across Muskoka. Request a free quote today."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Junk Services Muskoka logo" class="logo" />
+        <div>
+          <h1>Junk Services Muskoka</h1>
+          <p class="tagline">Fast, reliable junk services across Muskoka</p>
+        </div>
+      </div>
+      <a class="call-link" href="tel:7053808717">Call 705-380-8717</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h2>Same-day junk removal when you need it.</h2>
+          <p>
+            We help with home cleanouts, garage junk, renovation debris, yard waste,
+            and general pickup jobs around Muskoka.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#quote">Get a Free Quote</a>
+            <a class="button secondary" href="tel:7053808717">Call Now</a>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img src="assets/truck.jpg" alt="Junk removal truck" class="hero-image" />
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="container">
+        <h3>What we handle</h3>
+        <div class="service-grid">
+          <div class="service-card">Household junk removal</div>
+          <div class="service-card">Garage and shed cleanouts</div>
+          <div class="service-card">Yard waste pickup</div>
+          <div class="service-card">Renovation debris removal</div>
+          <div class="service-card">Appliance and furniture removal</div>
+          <div class="service-card">Estate and property cleanups</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section" id="quote">
+      <div class="container quote-grid">
+        <div>
+          <h3>Get a free quote</h3>
+          <p>
+            Fill this out and your quote request will be sent straight to
+            <strong>contact@junkservicemuskoka.com</strong>.
+          </p>
+          <p>
+            Add as much detail as you can so the quote is easier to price.
+          </p>
+        </div>
+
+        <form id="quoteForm" class="quote-form">
+          <div class="form-row">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+
+          <div class="form-row">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="service">Service Needed</label>
+            <input id="service" name="service" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="location">Job Location</label>
+            <input id="location" name="location" type="text" required />
+          </div>
+
+          <div class="form-row">
+            <label for="details">Job Details</label>
+            <textarea id="details" name="details" rows="5" required></textarea>
+          </div>
+
+          <button type="submit" class="button primary full-width" id="submitButton">
+            Send Quote Request
+          </button>
+
+          <p id="formMessage" class="form-message" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Junk Services Muskoka</p>
+      <p>Muskoka, Ontario</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
