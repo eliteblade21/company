@@ -15,7 +15,7 @@ export default async function handler(req, res) {
 
   try {
     await resend.emails.send({
-      from: "Junk Service Muskoka jaccob.w@junkservicemuskoka.com>",
+      from: "Junk Service Muskoka <jaccob.w@junkservicemuskoka.com>",
       to: ["contact@junkservicemuskoka.com"],
       reply_to: email,
       subject: `Quote Request - Junk Removal Muskoka - ${name}`,
