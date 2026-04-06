@@ -19,21 +19,11 @@ export default async function handler(req, res) {
       to: ["contact@junkservicemuskoka.com"],
       reply_to: email,
       subject: `New Quote - ${name}`,
-      text: `
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Service: ${service}
-Location: ${location}
-
-Details:
-${details}
-      `,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nLocation: ${location}\nDetails: ${details}`
     });
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ error: "Email failed to send" });
+    return res.status(500).json({ error: "Email failed" });
   }
 }
