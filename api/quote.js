@@ -7,9 +7,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, email, phone, service, location, details } = req.body;
+  const { name, phone, email, address, junk } = req.body;
 
-  if (!name || !email || !phone || !service || !location || !details) {
+  if (!name || !phone || !email || !junk) {
     return res.status(400).json({ error: "Missing fields" });
   }
 
@@ -18,8 +18,14 @@ export default async function handler(req, res) {
       from: "Junk Service Muskoka <contact@junkservicemuskoka.com>",
       to: ["contact@junkservicemuskoka.com"],
       reply_to: email,
-      subject: `New Quote - ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\nLocation: ${location}\nDetails: ${details}`
+      subject: `Quote Request - Junk Removal Muskoka - ${name}`,
+      text: `Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Address: ${address || ""}
+
+What needs to go:
+${junk}`,
     });
 
     return res.status(200).json({ success: true });

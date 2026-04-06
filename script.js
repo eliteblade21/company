@@ -20,23 +20,38 @@ if (menuToggle && mobileNav) {
 const quoteForm = document.getElementById('quoteForm');
 
 if (quoteForm) {
-  quoteForm.addEventListener('submit', (event) => {
+  quoteForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const data = new FormData(quoteForm);
-    const subject = encodeURIComponent('Quote Request - Junk Removal Muskoka');
-    const body = encodeURIComponent(
-      [
-        `Name: ${data.get('name') || ''}`,
-        `Phone: ${data.get('phone') || ''}`,
-        `Email: ${data.get('email') || ''}`,
-        `Address: ${data.get('address') || ''}`,
-        '',
-        'What needs to go:',
-        `${data.get('junk') || ''}`,
-      ].join('\n')
-    );
 
-    window.location.href = `mailto:junkservicesmuskoka@gmail.com?subject=${subject}&body=${body}`;
+    const payload = {
+      name: data.get('name') || '',
+      phone: data.get('phone') || '',
+      email: data.get('email') || '',
+      address: data.get('address') || '',
+      junk: data.get('junk') || '',
+    };
+
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to send request.');
+      }
+
+      alert('Quote request sent!');
+      quoteForm.reset();
+    } catch (error) {
+      alert(error.message || 'Failed to send request.');
+    }
   });
 }
